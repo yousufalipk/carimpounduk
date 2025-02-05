@@ -3,7 +3,7 @@ const RefreshTokenModel = require("../models/authTokenSchema");
 const EmailModel = require("../models/emailController");
 const InsuranceModel = require('../models/InsuranceSchema');
 const bcrypt = require('bcrypt');
-const JWTService = require('../Services/jwt');
+const JWTService = require('../services/jwt');
 
 exports.createUser = async (req, res) => {
     try {
