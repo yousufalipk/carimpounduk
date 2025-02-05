@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const RefreshTokenModel = require('../Models/authTokenSchema');
+const RefreshTokenModel = require('../models/authTokenSchema');
 const dotenv = require('dotenv');
 
 const { REFRESH_TOKEN_SECRET, ACCESS_TOKEN_SECRET } = require('../config/env');
