@@ -15,10 +15,19 @@ export const UserProvider = (props) => {
     const [user, setUser] = useState(null);
 
     const [loader, setLoader] = useState(false);
-    const [mainLoader, setMainLoader] = useState(true);
+    const [mainLoader, setMainLoader] = useState(false);
 
     const [dots, setDots] = useState('');
     const [buttonLoading, setButtonLoading] = useState(false);
+
+    const whatsappApi = 'https://api.whatsapp.com/send?phone=923021223335';
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    };
 
     useEffect(() => {
         let interval;
@@ -32,6 +41,7 @@ export const UserProvider = (props) => {
         return () => clearInterval(interval);
     }, [buttonLoading]);
 
+    /*
     useEffect(() => {
         const refreshAuth = async () => {
             try {
@@ -58,6 +68,7 @@ export const UserProvider = (props) => {
 
         refreshAuth();
     }, [])
+    */
 
     const createAccount = async (values) => {
         setLoader(true);
@@ -165,7 +176,9 @@ export const UserProvider = (props) => {
             mainLoader,
             dots,
             buttonLoading,
-            handleJoinCommunity
+            handleJoinCommunity,
+            whatsappApi,
+            scrollToSection
         }}>
             {props.children}
         </UserContext.Provider>

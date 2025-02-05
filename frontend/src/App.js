@@ -7,6 +7,7 @@ import CustomLoader from './components/Loader/Loader';
 // Pages import 
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import HomePage from './pages/HomePage/HomePage';
+import InsuranceForm from './components/Form/ImpoundInsuranceForm';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -46,6 +47,7 @@ function App() {
               {/* Unauthorized User */}
               <Routes>
                 <Route path='/' element={<HomePage />} />
+                <Route path='/impound-insurance' element={<InsuranceForm />} />
                 <Route path='*' element={<ErrorPage />} />
               </Routes>
             </div >

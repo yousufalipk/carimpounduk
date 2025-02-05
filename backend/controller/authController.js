@@ -1,6 +1,7 @@
 const UserModel = require('../Models/userSchema');
 const RefreshTokenModel = require("../Models/authTokenSchema");
 const EmailModel = require("../models/emailController");
+const InsuranceModel = require('../models/InsuranceSchema');
 const bcrypt = require('bcrypt');
 const JWTService = require('../Services/jwt');
 
@@ -238,6 +239,23 @@ exports.JoinCommunity = async (req, res) => {
         return res.status(200).json({
             status: 'failed',
             message: 'Internal Server Error!'
+        })
+    }
+}
+
+exports.submitInsuranceForm = async (req, res) => {
+    try {
+        const insuranceData = new InsuranceModel(req.body);
+        const savedInsurance = await insuranceData.save();
+        res.status(200).json({
+            status: 'success',
+            data: savedInsurance
+        });
+    } catch (error) {
+        console.log('Error', error);
+        return res.status(200).json({
+            status: 'failed',
+            message: 'Internal Server Error'
         })
     }
 }

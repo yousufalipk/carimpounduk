@@ -6,7 +6,8 @@ const {
     loginUser,
     logOutUser,
     refresh,
-    JoinCommunity
+    JoinCommunity,
+    submitInsuranceForm
 } = require('../controller/authController');
 
 // User routes
@@ -20,5 +21,7 @@ router.route('/logout-user').post(logOutUser);
 router.route('/refresh').post(refresh);
 
 router.route('/join-community').post(JoinCommunity);
+
+router.route('/submit-form').post(submitInsuranceForm);
 
 module.exports = router;

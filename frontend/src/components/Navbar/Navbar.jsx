@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/logo.png";
 import OpenMenu from "../../assets/OpenMenu.svg";
+import CrossIcon from '../../assets/cross.png';
+import { useUser } from '../../context/index';
 
 const Navbar = () => {
+    const { scrollToSection } = useUser();
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,11 +22,33 @@ const Navbar = () => {
         ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
             >
                 <ul className="w-full flex flex-col items-center gap-6">
-                    <li className="hover:text-firstColor font-semibold">Impound</li>
-                    <li className="hover:text-firstColor font-semibold">Temporary</li>
-                    <li className="hover:text-firstColor font-semibold">Help</li>
-                    <li className="hover:text-firstColor font-semibold">About</li>
-                    <li className="hover:text-firstColor font-semibold">Contact</li>
+                    <li
+                        onClick={() => {
+                            setMenuOpen(false);
+                            navigate('/');
+                            setTimeout(() => {
+                                scrollToSection('home');
+                            }, 500)
+                        }}
+                        className="hover:text-firstColor font-semibold">Home</li>
+                    <li
+                        onClick={() => {
+                            setMenuOpen(false);
+                            navigate('/');
+                            setTimeout(() => {
+                                scrollToSection('services');
+                            }, 500)
+                        }}
+                        className="hover:text-firstColor font-semibold">Services</li>
+                    <li
+                        onClick={() => {
+                            setMenuOpen(false);
+                            navigate('/');
+                            setTimeout(() => {
+                                scrollToSection('about');
+                            }, 500)
+                        }}
+                        className="hover:text-firstColor font-semibold">About</li>
                 </ul>
             </div>
 
@@ -43,35 +68,64 @@ const Navbar = () => {
                     className="w-[20%] h-full flex lg:hidden justify-end items-center rounded-full"
                 >
                     <div
-                        className={`${menuOpen ? "bg-white rounded-full w-16 h-16 flex justify-center items-center" : ""
-                            } transition-all duration-300 ease-in-out`}
+                        className="transition-all duration-300 ease-in-out hover:cursor-pointer"
                     >
-                        <img src={OpenMenu} alt="openMenu" width={25} />
+                        {menuOpen ? (
+                            <>
+                                <img src={CrossIcon} alt="openMenu" width={25} className="invert" />
+                            </>
+                        ) : (
+                            <>
+                                <img src={OpenMenu} alt="openMenu" width={25} className="invert" />
+                            </>
+                        )}
                     </div>
                 </div>
 
                 {/* Desktop Menu */}
                 <div className="w-[50%] h-full hidden lg:flex justify-center items-center">
-                    <ul className="w-full h-full flex justify-center items-center gap-10">
-                        <li className="hover:text-firstColor font-semibold">Impound</li>
-                        <li className="hover:text-firstColor font-semibold">Temporary</li>
-                        <li className="hover:text-firstColor font-semibold">Help</li>
-                        <li className="hover:text-firstColor font-semibold">About</li>
-                        <li className="hover:text-firstColor font-semibold">Contact</li>
+                    <ul className="w-full h-full flex justify-center items-center gap-20">
+                        <li
+                            onClick={() => {
+                                navigate('/');
+                                setTimeout(() => {
+                                    scrollToSection('home');
+                                }, 500)
+                            }}
+                            className="hover:text-firstColor font-semibold hover:cursor-pointer"
+                        >Home</li>
+                        <li
+                            onClick={() => {
+                                navigate('/');
+                                setTimeout(() => {
+                                    scrollToSection('services');
+                                }, 500)
+                            }}
+                            className="hover:text-firstColor font-semibold hover:cursor-pointer"
+                        >Services</li>
+                        <li
+                            onClick={() => {
+                                navigate('/');
+                                setTimeout(() => {
+                                    scrollToSection('about');
+                                }, 500)
+                            }}
+                            className="hover:text-firstColor font-semibold hover:cursor-pointer">About</li>
                     </ul>
                 </div>
 
                 {/* Desktop Buttons */}
                 <div className="w-[30%] h-full hidden lg:flex justify-end items-center gap-3">
-                    <button className="w-40 h-12 rounded-lg border-2 border-btnBorder hover:border-firstColor transition-all duration-300 ease-in-out font-semibold">
-                        Login
-                    </button>
-                    <button className="w-40 h-12 rounded-lg bg-firstColor hover:bg-secondColor transition-all duration-300 ease-in-out font-semibold text-white">
+                    <button
+                        onClick={() => {
+                            navigate('/impound-insurance')
+                        }}
+                        className="w-40 h-12 rounded-lg bg-firstColor hover:bg-secondColor transition-all duration-300 ease-in-out font-semibold text-white">
                         Impound Quote
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
