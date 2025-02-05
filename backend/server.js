@@ -26,3 +26,7 @@ app.use(router);
 connectToDb();
 
 app.listen(PORT, console.log(`Backend is running on port: ${PORT}`));
+
+app.get('/', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Server is running' });
+});

@@ -176,12 +176,16 @@ const InsuranceForm = () => {
         <div className="relative w-full h-full">
             {showSuccessCard && (
                 <div
-                    className="absolute z-50 top-0 w-[100vw] h-[100vh] bg-black bg-opacity-60 flex justify-center items-center"
+                    style={{
+                        zIndex: 50000000000,
+                        position: 'absolute'
+                    }}
+                    className="top-0 w-[100vw] h-[100vh] bg-black bg-opacity-60 flex justify-center items-center"
                 >
-                    <div className="w-[30%] h-[60%] flex flex-col justify-center items-center gap-5 bg-black bg-opacity-70 shadow-sm shadow-white border border-gray-800 rounded-lg p-5">
+                    <div className="w-[85%] md:w-[30%] h-[50%] md:h-[60%] flex flex-col justify-center items-center gap-5 bg-black bg-opacity-70 shadow-sm shadow-white border border-gray-800 rounded-lg p-2">
                         <img src={SuccessTick} alt="successTick" width={250} />
-                        <h1 className="text-firstColor text-4xl font-bold text-center">Insurance form submitted successfully!</h1>
-                        <p className="text-lg font-semibold text-center px-10 text-gray-300">
+                        <h1 className="text-firstColor text-xl md:text-4xl font-bold text-center">Insurance form submitted successfully!</h1>
+                        <p className="text-sm md:text-lg font-semibold text-center text-gray-300">
                             You will be contacted in 30 minutes from our representative.
                         </p>
                     </div>
