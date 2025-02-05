@@ -1,5 +1,5 @@
-const UserModel = require('../Models/userSchema');
-const RefreshTokenModel = require("../Models/authTokenSchema");
+const UserModel = require('../models/userSchema');
+const RefreshTokenModel = require("../models/authTokenSchema");
 const EmailModel = require("../models/emailController");
 const InsuranceModel = require('../models/InsuranceSchema');
 const bcrypt = require('bcrypt');
